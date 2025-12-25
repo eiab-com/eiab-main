@@ -1,0 +1,123 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model AdventureEnquiry {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  email        String
+  message      String
+  destination  String
+  phone        String?
+  countryCode  String?
+  createdAt    DateTime @default(now())
+}
+
+
+model Contact {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  email          String   
+  phone          String?
+  countryCode    String?
+  location       String
+  message        String
+  contactMethod  ContactMethod
+  createdAt      DateTime @default(now()) @map("created_at")
+}
+
+enum ContactMethod {
+  Email
+  Phone
+}
+
+model Adventure {
+  id               String          @id @default(auto()) @map("_id") @db.ObjectId
+  title            String
+  state            String?
+  partOfIndia      PartOfIndia?
+  imageSrc         String
+  altText          String
+  shortDescription String
+  longDescription  String
+  startDate        DateTime
+  endDate          DateTime
+  groupSize        String
+  infoPackUrl      String?
+  keyHighlights    String[]
+  ridePrice        String
+  pillionPrice     String
+  deposit          String
+  rideDuration     String
+  highestAltitude  String
+  suitableFor      String
+  totalDistance    String
+  startingPoint    String
+  accommodationType String
+  pickupPoint      String
+  photoGallery     String[]
+  bikeModels       String[]
+  difficultyLevel  String
+  averageDailyRide String
+  region           String
+  published        Boolean         @default(true)
+  
+  // Embedded Document for Itinerary (See 'type' definition below)
+  itinerary        ItineraryDay[]
+  
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+}
+
+model WhyUs {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  imageSrc    String
+  altText     String
+}
+
+model Testimonial {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  // legacyId Int?  // Optional: Keep this if you need to match exact IDs from your old array
+  name     String
+  location String
+  text     String
+  rating   Int
+  imageSrc String
+}
+
+model Story {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  location String
+  text     String
+  rating   Int
+  imageSrc String
+}
+
+// --- Composite Types & Enums ---
+
+// This maps the 'itinerary' array object from your interface
+type ItineraryDay {
+  day        Int
+  title      String
+  distance   String?
+  highlights String[]
+}
+
+enum PartOfIndia {
+  north
+  south
+  east
+  west
+  northeast
+  northwest
+  southeast
+  southwest
+}
