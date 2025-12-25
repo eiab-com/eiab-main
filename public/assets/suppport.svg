@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 472 472">
+  <g>
+    <!-- Background -->
+    <rect width="472" height="472" fill="#E67F33" rx="20" ry="20"/>
+
+    <!-- Sun -->
+    <circle cx="350" cy="100" r="40" fill="#FCB641"/>
+
+    <!-- Mountain Left -->
+    <polygon points="80,360 180,180 280,360" fill="#73390E"/>
+
+    <!-- Mountain Right -->
+    <polygon points="200,360 320,220 440,360" fill="#AD5F26"/>
+
+    <!-- Support Hands (Symbolizing Help) -->
+    <path d="M160 320 Q180 290 200 320 T240 320" fill="#FEF0D9"/>
+    <path d="M280 320 Q300 290 320 320 T360 320" fill="#FEF0D9"/>
+
+    <!-- Support Icon (Heart) -->
+    <path d="M236 280 
+             C220 260, 200 260, 200 280 
+             C200 300, 236 320, 236 320 
+             C236 320, 272 300, 272 280 
+             C272 260, 252 260, 236 280Z" 
+          fill="#FCB641"/>
+
+    <!-- Ground -->
+    <rect y="360" width="472" height="112" fill="#AD5F26"/>
+  </g>
+</svg>
